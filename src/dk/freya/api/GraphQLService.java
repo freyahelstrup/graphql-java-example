@@ -27,7 +27,7 @@ public class GraphQLService {
         Gson gson = new GsonBuilder().setDateFormat("S").setPrettyPrinting().create();
         GraphQL graphQL = initSchema();
 
-        before("*", (request, response) -> System.out.println("Received API call on GraphQLService"));
+        before("", (request, response) -> System.out.println("Received API call on GraphQLService"));
 
         get("", (request, response) -> {
             ExecutionResult result = graphQL.execute(request.queryParams("query"));
