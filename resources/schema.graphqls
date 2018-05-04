@@ -1,0 +1,19 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    ingredients(id: Int, name: String): [Ingredient]
+}
+
+type Mutation {
+    createIngredient(name: String!): Ingredient
+    updateIngredient(id: Int!, name: String!): Ingredient
+    deleteIngredient(id: Int!): Boolean
+}
+
+type Ingredient {
+    id: ID
+    name: String
+}
