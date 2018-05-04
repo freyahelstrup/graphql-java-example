@@ -12,7 +12,7 @@ import java.util.List;
 public class IngredientDataFetcher implements DataFetcher {
     @Override
     public Object get(DataFetchingEnvironment data) {
-        IngredientDAO ingredientDAO = new IngredientDAO();
+        IngredientDAO ingredientDAO = IngredientDAO.instance;
 
         try {
             List<IngredientDTO> ingredientList;

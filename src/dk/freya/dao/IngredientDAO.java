@@ -9,12 +9,16 @@ import java.util.Map;
 
 public class IngredientDAO {
     private static Map<Integer, IngredientDTO> ingredientMap;
+    private int nextId;
 
-    public IngredientDAO() {
+    public static IngredientDAO instance = new IngredientDAO();
+
+    private IngredientDAO() {
         ingredientMap = new HashMap<>();
-        ingredientMap.put(1, new IngredientDTO(1, "kartoffel"));
-        ingredientMap.put(2, new IngredientDTO(2, "majs"));
-        ingredientMap.put(3, new IngredientDTO(3, "mel"));
+        nextId = 1;
+        addIngredient(new IngredientDTO(0, "kartoffel"));
+        addIngredient(new IngredientDTO(0, "fisk"));
+        addIngredient(new IngredientDTO(0, "mel"));
     }
 
     public List<IngredientDTO> getIngredientList() {
@@ -39,6 +43,7 @@ public class IngredientDAO {
     }
 
     public IngredientDTO addIngredient(IngredientDTO ingredient) {
+        ingredient.id = nextId++;
         ingredientMap.put(ingredient.id, ingredient);
         return getIngredientFromId(ingredient.id);
     }

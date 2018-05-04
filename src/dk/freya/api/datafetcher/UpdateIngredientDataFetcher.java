@@ -9,7 +9,7 @@ import graphql.schema.DataFetchingEnvironment;
 public class UpdateIngredientDataFetcher implements DataFetcher {
     @Override
     public Object get(DataFetchingEnvironment data) {
-        IngredientDAO ingredientDAO = new IngredientDAO();
+        IngredientDAO ingredientDAO = IngredientDAO.instance;
 
         try {
             int id = data.getArgument("id");
