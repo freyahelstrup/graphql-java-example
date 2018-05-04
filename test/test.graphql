@@ -1,3 +1,35 @@
-query getIngredients {
-    ingredients{id, name}
+query getAllIngredients {
+    ingredients{
+        id,
+        name
+    }
+}
+query getAllIngredientNames {
+    ingredients{
+        name
+    }
+}
+query getIngredient1 {
+    ingredients(id: 1) {
+        id,
+        name
+    }
+}
+
+mutation addIngredient {
+    createIngredient(name: "reje") {
+        id,
+        name
+    }
+}
+
+mutation changeIngredientName {
+    updateIngredient(id: 3, name: "hvedemel") {
+        id,
+        name
+    }
+}
+
+mutation removeIngredient {
+    deleteIngredient(id: 4)
 }
