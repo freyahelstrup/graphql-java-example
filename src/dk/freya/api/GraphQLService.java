@@ -23,9 +23,12 @@ import static graphql.schema.idl.RuntimeWiring.newRuntimeWiring;
 import static spark.Spark.*;
 
 public class GraphQLService {
+    private static GraphQL graphQL;
+    private static Gson gson;
+
     public static void setupRoutes() {
-        Gson gson = new GsonBuilder().setDateFormat("S").setPrettyPrinting().create();
-        GraphQL graphQL = initSchema();
+        graphQL = initializeGraphQL();
+        gson = new GsonBuilder().setPrettyPrinting().create();
 
         before("", (request, response) -> System.out.println("Received API call on GraphQLService"));
 
@@ -43,7 +46,7 @@ public class GraphQLService {
         });
     }
 
-    private static GraphQL initSchema() {
+    private static GraphQL initializeGraphQL() {
         //Create TypeDefinitionRegistry
         String schema;
         try {
