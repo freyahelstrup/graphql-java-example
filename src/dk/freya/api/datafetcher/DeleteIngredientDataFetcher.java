@@ -8,7 +8,7 @@ import graphql.schema.DataFetchingEnvironment;
 public class DeleteIngredientDataFetcher implements DataFetcher {
     @Override
     public Object get(DataFetchingEnvironment data) {
-        IngredientDAO ingredientDAO = IngredientDAO.instance;
+        IngredientDAO ingredientDAO = IngredientDAO.getInstance();
 
         try {
             return ingredientDAO.deleteIngredient(data.getArgument("id"));

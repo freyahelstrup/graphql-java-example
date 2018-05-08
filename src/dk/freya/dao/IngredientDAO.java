@@ -8,17 +8,21 @@ import java.util.List;
 import java.util.Map;
 
 public class IngredientDAO {
-    private static Map<Integer, IngredientDTO> ingredientMap;
+    private static IngredientDAO instance;
+    private Map<Integer, IngredientDTO> ingredientMap;
     private int nextId;
-
-    public static IngredientDAO instance = new IngredientDAO();
 
     private IngredientDAO() {
         ingredientMap = new HashMap<>();
-        nextId = 1;
         addIngredient(new IngredientDTO(0, "kartoffel"));
         addIngredient(new IngredientDTO(0, "fisk"));
         addIngredient(new IngredientDTO(0, "mel"));
+    }
+
+    public static IngredientDAO getInstance() {
+        if (instance == null)
+            instance = new IngredientDAO();
+        return instance;
     }
 
     public List<IngredientDTO> getIngredientList() {
